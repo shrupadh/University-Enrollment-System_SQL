@@ -1,0 +1,49 @@
+
+#3 SQL Code:
+CREATE TABLE Department
+(
+  Code INT NOT NULL,
+  Name VARCHAR NOT NULL,
+  Chairman VARCHAR NOT NULL,
+  PRIMARY KEY (Code)
+);
+
+CREATE TABLE Professor
+(
+  Netid INT NOT NULL,
+  First_Name VARCHAR NOT NULL,
+  Last_Name VARCHAR NOT NULL,
+  Rank VARCHAR NOT NULL,
+  Department VARCHAR NOT NULL,
+  Code INT NOT NULL,
+  PRIMARY KEY (Netid),
+  FOREIGN KEY (Code) REFERENCES Department (Code)
+);
+
+CREATE TABLE Student
+(
+  First_Name VARCHAR NOT NULL,
+  Last_Name VARCHAR NOT NULL,
+  Netid INT NOT NULL,
+  Major VARCHAR NOT NULL,
+  Status (Undergraduate/Graduate) VARCHAR NOT NULL,
+  New_Column INT NOT NULL,
+  Netid INT NOT NULL,
+  PRIMARY KEY (Netid),
+  FOREIGN KEY (Netid) REFERENCES Professor (Netid)
+);
+
+CREATE TABLE Course
+(
+  CourseID INT NOT NULL,
+  Course_Name VARCHAR NOT NULL,
+  Year INT NOT NULL,
+  Semester VARCHAR NOT NULL,
+  Department VARCHAR NOT NULL,
+  Netid INT NOT NULL,
+  Netid INT NOT NULL,
+  PRIMARY KEY (CourseID),
+  FOREIGN KEY (Netid) REFERENCES Student (Netid),
+  FOREIGN KEY (Netid) REFERENCES Professor (Netid)
+);
+
